@@ -1,22 +1,46 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 function AddTransaction() {
+  const [transactions, setTransactions] = useState([]);
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
+
+  function handleAddTransaction() {
+    const newTransaction = { text: text, amount: amount };
+    setTransactions((prevTransactions) => [
+      ...prevTransactions,
+      newTransaction,
+    ]);
+    setText("");
+    setAmount(0);
+  }
 
   return (
     <>
       <h3>Add new transaction</h3>
       <div className="form-control">
         <label htmlFor="text">Text</label> <br />
-        <input type="text" placeholder="Enter text..." />
+        <input
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Enter text..."
+        />
       </div>
       <div className="form-control">
         <label htmlFor="amount">
-          Amount <br /> (negative - expense,positive - income)
+          Amount <br /> (negative - expense, positive - income)
         </label>
         <br />
-        <input type="number" placeholder="Enter amount..." />
+        <input
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          placeholder="Enter amount..."
+        />
+        <button className="btn" onClick={handleAddTransaction}>
+          Add Transaction
+        </button>
       </div>
     </>
   );

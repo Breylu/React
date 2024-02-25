@@ -1,3 +1,7 @@
+:root{
+    --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -13,31 +17,30 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.container {
+    margin: 30px auto;
+    width: 350px;
+}
+
 h1 {
     letter-spacing: 1px;
     margin: 0;
 }
 
 h3 {
-    border-bottom: 1px solid #bbb;
+    border-bottom: 1px solid hsl(0, 0%, 75%);
     padding-bottom: 10px;
     margin: 40px 0 10px;
 }
 
 h4 {
     margin: 0;
-    padding-bottom: 5px;
     text-transform: uppercase;
-}
-
-.container {
-    margin: 30px auto;
-    width: 350px;
 }
 
 .Income-expense-container {
     background-color: hsl(0, 0%, 100%);
-    box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1);
+    box-shadow: var(--box-shadow);
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -53,6 +56,12 @@ h4 {
     border-right: 1px solid #dedede;
 }
 
+.money{
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin: 5px 0;
+}
+
 .money.plus {
     color: #2ecc71;
 }
@@ -66,6 +75,34 @@ label {
     margin: 10px 0;
 }
 
+input[type='text'],
+input[type='number'] {
+    border: 1px solid hsl(0, 0%, 85%);
+    border-radius: 2px;
+    display: block;
+    font-size: 15px;
+    padding: 10px;
+    width: 100%;
+}
+
+.btn {
+    cursor: pointer;
+    background-color: hsl(250, 100%, 77%);
+    box-shadow: var(--box-shadow);
+    color: hsl(0, 0%, 100%);
+    border: 0;
+    display: block;
+    font-size: 15px;
+    margin: 10px 0 30px;
+    padding: 10px;
+    width: 100%;
+}
+
+.btn:focus,
+.delete-btn:focus{
+    outline: 0;
+}
+
 .list {
     list-style-type: none;
     padding: 0;
@@ -74,7 +111,7 @@ label {
 
 .list li {
     background-color: hsl(0, 0%, 100%);
-    box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.05);
+    box-shadow: var(--box-shadow);
     color: #333;
     display: flex;
     justify-content: space-between;
@@ -110,8 +147,9 @@ label {
 .list li:hover .delete-btn {
     opacity: 1;
 }
+
 @media (max-width: 320px) {
     .container {
-      width: 300px;
+        width: 300px;
     }
-  }
+}

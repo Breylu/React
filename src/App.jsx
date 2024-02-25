@@ -1,14 +1,16 @@
 import ExpenseTracker from "./components/ExpenseTracker";
-import Transactions from "./components/Transactions";
-import { AddTransaction } from "./components/AddTransaction";
+import Transaction from "./components/Transaction";
+import AddTransaction from "./components/AddTransaction";
+import TransactionList from "./components/TransactionList";
 
 function App() {
   return (
     <>
       <div className="container">
         <ExpenseTracker />
-        <Transactions />
+        <TransactionList />
         <AddTransaction />
+        <Transaction />
       </div>
     </>
   );
