@@ -1,16 +1,16 @@
 import Transaction from "./Transaction";
+import { useTransactions } from "../context/TransactionContext";
 
 function TransactionList() {
+  const { transactions } = useTransactions();
   return (
     <>
-      {/* <h3>History</h3>
+      <h3>History</h3>
       <ul className="list">
         {transactions.map((transaction, index) => (
-          <li key={index}>
-            {transaction.text} {transaction.amount}
-          </li>
+          <Transaction key={index} transaction={transaction} />
         ))}
-      </ul> */}
+      </ul>
     </>
   );
 }

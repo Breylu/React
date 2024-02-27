@@ -1,16 +1,14 @@
 import { useState } from "react";
+import { useTransactions } from "../context/TransactionContext";
 
 function AddTransaction() {
-  const [transactions, setTransactions] = useState([]);
+  const { addTransaction } = useTransactions();
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
 
   function handleAddTransaction() {
     const newTransaction = { text: text, amount: amount };
-    setTransactions((prevTransactions) => [
-      ...prevTransactions,
-      newTransaction,
-    ]);
+    addTransaction(newTransaction);
     setText("");
     setAmount(0);
   }
