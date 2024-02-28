@@ -1,36 +1,35 @@
-import { useTransactions } from "../context/TransactionContext";
+// import { useTransactions } from "../context/TransactionContext";
+import { useContext } from "react";
+import { useTransaction } from "./TransactionList";
+// import PropTypes from "prop-types";
 
 function Transaction() {
-  const { transactions, removeTransaction } = useTransactions();
+  const transaction = useContext(useTransaction);
 
-  const sign = transactions.amount < 0 ? "-" : "+";
+  // const { transaction, removeTransaction } = useTransactions();
+
+  const sign = transaction.amount < 0 ? "-" : "+";
 
   return (
-    <li className={transactions.amount < 0 ? "minus" : "plus"}>
-      {transactions.text}
+    <li className={transaction.amount < 0 ? "minus" : "plus"}>
+      {transaction.text}
       <span>
-        {sign}
-        {transactions.amount}
+        {sign} €{Math.abs(transaction.amount)}
       </span>
-      <button className="delete-btn" onClick={removeTransaction}>
-        x
+      <button className="delete-btn" onClick={() => transaction.id}>
+        ✖
       </button>
     </li>
   );
 }
-//Money formatter function
-// function moneyFormatter(num) {
-//   let p = num.toFixed(2).split(".");
-//   return (
-//     "$ " +
-//     p[0]
-//       .split("")
-//       .reverse()
-//       .reduce(function (acc, num, i, orig) {
-//         return num === "-" ? acc : num + (i && !(i % 3) ? "," : "") + acc;
-//       }, "") +
-//     "." +
-//     p[1]
-//   );
-// }
+
+// Transaction.propTypes = {
+//   transaction: PropTypes.shape({
+//     id: PropTypes.number.isRequired,
+//     text: PropTypes.string.isRequired,
+//     amount: PropTypes.number.isRequired,
+//   }).isRequired,
+//   removeTransaction: PropTypes.func.isRequired,
+// };
+
 export default Transaction;

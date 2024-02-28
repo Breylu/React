@@ -7,16 +7,16 @@ function ExpenseTracker() {
     <div>
       <h2>Expense Tracker</h2>
       <h4>Your Balance</h4>
-      <h1 id="balance">${TotalBalance()}</h1>
+      <h1 id="balance">€{TotalBalance()}</h1>
 
       <div className="Income-expense-container">
         <div>
           <h4>Income</h4>
-          <p className="money plus">+$0.00</p>
+          <p className="money plus">+€0.00</p>
         </div>
         <div>
           <h4>Expense</h4>
-          <p className="money minus">-$0.00</p>
+          <p className="money minus">-€0.00</p>
         </div>
       </div>
     </div>

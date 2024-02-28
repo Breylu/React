@@ -4,13 +4,13 @@ import { useTransactions } from "../context/TransactionContext";
 function AddTransaction() {
   const { addTransaction } = useTransactions();
   const [text, setText] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
 
   function handleAddTransaction() {
     const newTransaction = { text: text, amount: amount };
     addTransaction(newTransaction);
     setText("");
-    setAmount(0);
+    setAmount("");
   }
 
   return (
